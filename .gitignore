@@ -1,0 +1,5 @@
+.claude/
+lessons/
+*.class
+Thumbs.db
+desktop.ini
