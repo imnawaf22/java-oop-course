@@ -10,13 +10,16 @@
 ```
 index.html        الصفحة الرئيسية (بطاقات الدروس وحالة الكويز)
 lesson.html       صفحة الدرس (تعرض lesson.html?l=1 إلى 5)
+bank.html         بنك الأسئلة المحلول (3 مجموعات، 188 سؤال)
 admin.html        لوحة الإدارة (روابط التعديل على GitHub)
 css/style.css     التصميم + الوضع الليلي + الجوال
 js/theme.js       الوضع الليلي + حماية من التضمين في iframe
 js/app.js         عرض الدروس، تلوين Java، زر النسخ، الكويز
+js/bank.js        صفحة بنك الأسئلة
 js/admin.js       لوحة الإدارة
 js/config.js      اسم مستودع GitHub
 data/lesson1-5.js محتوى كل درس وأسئلة الكويز (طريقة الكتابة في أول lesson1.js)
+data/bank.js      أسئلة بنك الأسئلة (answer يبدأ من 0: 0=A, 1=B, 2=C, 3=D)
 ```
 
 ## التعديل

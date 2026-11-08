@@ -383,6 +383,40 @@ pre.code.numbered .line::before {
 .review-line .lbl.right { background: var(--ok-soft); color: var(--ok); }
 .all-right { text-align: center; color: var(--ok); font-weight: 700; padding: 10px; }
 
+/* question bank */
+.bank-btn { display: none; font-weight: 800; }
+.bank-btn:hover { text-decoration: none; }
+.card-bank { border-style: dashed; }
+.bank { padding-bottom: 60px; }
+.bank-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 6px 0 16px; }
+.tab-btn {
+  font: inherit; text-align: start; cursor: pointer; padding: 12px 14px; border-radius: 12px;
+  border: 1.5px solid var(--border); background: var(--surface); color: var(--text);
+  display: flex; flex-direction: column; gap: 2px; line-height: 1.6;
+}
+.tab-btn:hover { border-color: var(--accent); }
+.tab-btn.active { border-color: var(--accent); background: var(--accent-soft); }
+.tab-title { font-weight: 700; font-size: .95rem; }
+.tab-meta { color: var(--muted); font-size: .82rem; }
+.bank-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.seg-btn { font: inherit; font-size: .92rem; cursor: pointer; padding: 7px 16px; border: 0; background: transparent; color: var(--muted); }
+.seg-btn.active { background: var(--accent); color: #fff; font-weight: 700; }
+.bank-sec-title { font-size: 1.3rem; margin: 18px 0 6px; }
+.q-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 16px 18px; margin: 14px 0; box-shadow: var(--shadow);
+}
+.q-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: .85rem; color: var(--muted); }
+.q-num { font-weight: 800; color: var(--accent); font-size: .95rem; }
+.q-id { font-family: var(--mono); background: var(--surface-2); padding: 0 8px; border-radius: 6px; }
+.q-res { margin-inline-start: auto; font-weight: 700; }
+.q-res.ok { color: var(--ok); }
+.q-res.bad { color: var(--bad); }
+.q-body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; line-height: 1.65; }
+.q-body .q-text { font-size: 1.05rem; margin: 10px 0; line-height: 1.6; }
+.q-card .callout { margin: 10px 0 0; }
+
 /* admin */
 .admin { padding-bottom: 60px; }
 .admin h2 { font-size: 1.3rem; margin: 30px 0 10px; }
@@ -405,6 +439,7 @@ pre.code.numbered .line::before {
 @media (max-width: 920px) {
   .layout { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 16px; }
   .menu-btn { display: grid; }
+  .bank-btn { display: grid; }
   .topnav { display: none; }
   .sidebar {
     position: fixed; top: var(--topbar-h); bottom: 0; right: 0; width: min(86vw, 320px);

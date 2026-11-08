@@ -20,6 +20,7 @@
   var files = lessons.map(function (l) {
     return { path: 'data/lesson' + l.id + '.js', title: 'الدرس ' + l.id + ': ' + l.title, note: 'الشرح + ' + (l.quiz || []).length + ' سؤال كويز' };
   }).concat([
+    { path: 'data/bank.js', title: 'بنك الأسئلة', note: 'أسئلة البنك وحلولها' },
     { path: 'index.html', title: 'الصفحة الرئيسية', note: 'العنوان والوصف' },
     { path: 'css/style.css', title: 'التصميم والألوان', note: 'CSS' },
     { path: 'js/app.js', title: 'كود الموقع والكويز', note: 'JavaScript' }

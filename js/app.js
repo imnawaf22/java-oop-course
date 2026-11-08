@@ -202,10 +202,13 @@
       return '<a href="lesson.html?l=' + l.id + '"' + (l.id === activeId ? ' class="active"' : '') +
         ' title="' + esc(l.title) + '">الدرس ' + l.id + '</a>';
     }).join('');
+    var isLesson = typeof activeId === 'number' && activeId > 0;
     bar.innerHTML =
-      (activeId ? '<button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="القائمة">☰</button>' : '') +
+      (isLesson ? '<button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="القائمة">☰</button>' : '') +
       '<a class="brand" href="index.html"><span class="brand-logo">{ }</span><span class="brand-text">Java OOP</span></a>' +
-      '<nav class="topnav" aria-label="الدروس"><a href="index.html"' + (activeId ? '' : ' class="active"') + '>الرئيسية</a>' + links + '</nav>' +
+      '<nav class="topnav" aria-label="الدروس"><a href="index.html"' + (activeId === 'home' ? ' class="active"' : '') + '>الرئيسية</a>' + links +
+      '<a href="bank.html"' + (activeId === 'bank' ? ' class="active"' : '') + '>بنك الأسئلة</a></nav>' +
+      (activeId === 'bank' ? '' : '<a class="icon-btn bank-btn" href="bank.html" title="بنك الأسئلة" aria-label="بنك الأسئلة">?</a>') +
       '<span class="spacer"></span>' +
       '<button class="icon-btn" id="themeBtn" type="button"></button>';
     setTheme(currentTheme());
@@ -227,10 +230,10 @@
   }
 
   function renderHome() {
-    buildTopbar(0);
+    buildTopbar('home');
     var grid = $('#cards');
     if (!grid) return;
-    grid.innerHTML = LESSONS.map(function (l) {
+    var html = LESSONS.map(function (l) {
       return '<a class="card" href="lesson.html?l=' + l.id + '">' +
         '<div class="card-num">' + l.id + '</div>' +
         '<h2>' + inline(l.title) + '</h2>' +
@@ -238,6 +241,12 @@
         '<div class="card-foot">' + statusBadge(l.id, (l.quiz || []).length) +
         '<span class="card-go">ابدأ الدرس ←</span></div></a>';
     }).join('');
+    html += '<a class="card card-bank" href="bank.html">' +
+      '<div class="card-num">?</div>' +
+      '<h2>بنك الأسئلة (محلول)</h2>' +
+      '<p>أسئلة اختيار من متعدد بالإنجليزي على كل المادة، مقسمة على ثلاث مجموعات، ولكل سؤال شرح بالعربي. تقدر تختبر نفسك أو تعرض الحلول مباشرة.</p>' +
+      '<div class="card-foot"><span class="badge">3 مجموعات</span><span class="card-go">افتح البنك ←</span></div></a>';
+    grid.innerHTML = html;
   }
 
   /* ---------- صفحة الدرس ---------- */
@@ -523,9 +532,13 @@
   }
 
   /* ---------- تشغيل ---------- */
+  // أدوات مشتركة تستخدمها صفحة بنك الأسئلة (js/bank.js)
+  window.OOPSite = { esc: esc, inline: inline, el: el, shuffle: shuffle, codeBlock: codeBlock };
+
   document.addEventListener('DOMContentLoaded', function () {
     var page = document.body.getAttribute('data-page');
     if (page === 'lesson') renderLesson();
-    else renderHome();
+    else if (page === 'home') renderHome();
+    else buildTopbar(page);
   });
 })();
